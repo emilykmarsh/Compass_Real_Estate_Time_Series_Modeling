@@ -1,72 +1,52 @@
 
-# Mod 4 Project - Starter Notebook
+# Compass Real Estate Time Series Analysis
 
-This notebook has been provided to you so that you can make use of the following starter code to help with the trickier parts of preprocessing the Zillow dataset. 
+Author: Emily Marsh
 
-The notebook contains a rough outline the general order you'll likely want to take in this project. You'll notice that most of the areas are left blank. This is so that it's more obvious exactly when you should make use of the starter code provided for preprocessing. 
+## Introduction
 
-**_NOTE:_** The number of empty cells are not meant to infer how much or how little code should be involved in any given step--we've just provided a few for your convenience. Add, delete, and change things around in this notebook as needed!
+In the United States, a common investment oppurtunity for personal and commercial investment is real estate. In 2023 the average the average annual return on investment for residential real estate in the United States is 10.6 percent. Commercial real estate averages a slightly lower ROI of 9.5 percent, while REITs average a slightly higher 11.8 percent. There have been recent historical events that have had an impact on this annual return on investment. The housing crash in 2011 as well as the COVID pandemic of 2020 have had outsized impacts on pricing of housing, however a consistent increase over time has made this an area of consistent profits. Compass Real Estate, an real estate brokerage company that specializes in high-margin, luxury homes in upscale markets, has commissioned this project to expand into a new lower cost housing market in order to appeal to a broader group of clients and quicker cash flow.
 
-# Some Notes Before Starting
+## Business Objective
 
-This project will be one of the more challenging projects you complete in this program. This is because working with Time Series data is a bit different than working with regular datasets. In order to make this a bit less frustrating and help you understand what you need to do (and when you need to do it), we'll quickly review the dataset formats that you'll encounter in this project. 
+Compass Real Estate is interested in investing in lower priced housing, under $300,000, for a smaller but more consistent revenue stream to supplement their luxury housing investments. This will also give the company the chance to expand their client base to more middle class home buyers. However, before investing capitol in this new venture, Compass would like to do analysis into determining the best five zipcodes that provides the biggest chance of profit. Using the dataset, this analysis will provide insight into the five best zip codes for investment as well as the projected profits over the next five years in each zip code. These predictions will be made using Time Series modeling.
 
-## Wide Format vs Long Format
+## Dataset
 
-If you take a look at the format of the data in `zillow_data.csv`, you'll notice that the actual Time Series values are stored as separate columns. Here's a sample: 
+The dataset used for this project is a subset of a larger dataset from Zillow, and consists of 14,732 rows and 272 columns. The format of the dataset includes features about RegionID, Region Name (Zipcode), City, State, Metro, County Name, Size Rank, and the average price of houses in the zipcode starting in April of 1994 and ending with April of 2018. Each RegionName/Zipcode is a unique value, while Metro and County Name are not. It is also important to note that the dataset is in a wide format versus a long format. Therefore in order to pass this data into a model, the dataset will need to be reshaped to a long format.
 
-<img src='../images/df_head.png'>
+## Data Preparation
 
-You'll notice that the first seven columns look like any other dataset you're used to working with. However, column 8 refers to the median housing sales values for April 1996, column 9 for May 1996, and so on. This This is called **_Wide Format_**, and it makes the dataframe intuitive and easy to read. However, there are problems with this format when it comes to actually learning from the data, because the data only makes sense if you know the name of the column that the data can be found it. Since column names are metadata, our algorithms will miss out on what dates each value is for. This means that before we pass this data to our ARIMA model, we'll need to reshape our dataset to **_Long Format_**. Reshaped into long format, the dataframe above would now look like:
+A dataset with 14723 rows would require substantial processing power to run through a model. Therefore in order to streamline the process, the dataset will be filtered using the client's budget and the zipcodes that show the greatest return on investment. In order to determine this, the profit of each zip code will be subtracted from the original price of the average property in April of 1996 from the average property value in April of 2018. Due to the client's budget, the available houses will be limited by price, only properties with a value of under $300,000 as of April 2018. Since Compass is a national company, geography is not a limiting factor for investment consideration therefore no geographical constraints will be used to limit the available zipcodes.
 
-<img src='../images/melted1.png'>
+## Methods
 
-There are now many more rows in this dataset--one for each unique time and zipcode combination in the data! Once our dataset is in this format, we'll be able to train an ARIMA model on it. The method used to convert from Wide to Long is `pd.melt()`, and it is common to refer to our dataset as 'melted' after the transition to denote that it is in long format. 
+In order to determine which time series model is appropriate for the data series, four models will be built. Once built, the most accurate time series model will be selected to fine tune and make predictions for final recommendations. The RMSE score will be used as a determinate of which model is the most accurate. The reason the RMSE will be used is that, as an expression of how closely the data points are around the line of best fit, the highest RMSE score shows the most accurate prediction and limits the amount of unpredicted values. This is important since the client wants to as accurately as possible predict future ROI on investment.
 
-# Helper Functions Provided
+## Visualizing Time Series Model Performance
 
-Melting a dataset can be tricky if you've never done it before, so you'll see that we have provided a sample function, `melt_data()`, to help you with this step below. Also provided is:
+## Conclusions
 
-* `get_datetimes()`, a function to deal with converting the column values for datetimes as a pandas series of datetime objects
-* Some good parameters for matplotlib to help make your visualizations more readable. 
+## Recommendations
 
-Good luck!
+## Next Steps
 
+## References
 
-# Step 1: Load the Data/Filtering for Chosen Zipcodes
+## For More Information
 
-# Step 2: Data Preprocessing
+The full analysis and process by which these conclusions were reached can be found in the Jupyter notebook or by reviewing the summary presentation.
 
+For additional questions, contact Emily Marsh: marshemily2@gmail.com
 
-```python
-def get_datetimes(df):
-    return pd.to_datetime(df.columns.values[1:], format='%Y-%m')
-```
+## Repository Structure
 
-# Step 3: EDA and Visualization
-
-
-```python
-font = {'family' : 'normal',
-        'weight' : 'bold',
-        'size'   : 22}
-
-matplotlib.rc('font', **font)
-
-# NOTE: if you visualizations are too cluttered to read, try calling 'plt.gcf().autofmt_xdate()'!
-```
-
-# Step 4: Reshape from Wide to Long Format
-
-
-```python
-def melt_data(df):
-    melted = pd.melt(df, id_vars=['RegionName', 'City', 'State', 'Metro', 'CountyName'], var_name='time')
-    melted['time'] = pd.to_datetime(melted['time'], infer_datetime_format=True)
-    melted = melted.dropna(subset=['value'])
-    return melted.groupby('time').aggregate({'value':'mean'})
-```
-
-# Step 5: ARIMA Modeling
-
-# Step 6: Interpreting Results
+|── Data
+ 
+ ├── Images
+ 
+ ├── README.md
+ 
+ ├── PhaseFourFinalProjectPresentation.pdf
+ 
+ └── PhaseFourProject.ipynb
