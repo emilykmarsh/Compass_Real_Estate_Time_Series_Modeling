@@ -1,5 +1,5 @@
 
-# Compass Real Estate Time Series Analysis
+# Compass Real Estate Time Series Modeling
 
 Author: Emily Marsh
 
