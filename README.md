@@ -1,4 +1,5 @@
 
+
 # Compass Real Estate Time Series Modeling
 
 Author: Emily Marsh
@@ -33,6 +34,8 @@ Compared to the RMSE values of previous models, the LSTM Neural Network vastly i
 * The RMSE value associated with the **Tuned Facebook Prophet model is $42,310.49083950662**
 * The RMSE value associated with the **LSTM Neural Network model is $4,331.569679943821**
 
+![ModelPerformance](Images/RMSEmodelchart.png)
+
 ## Conclusions
 
 Compass Real Estate has a final model for prediction with an **RMSE score of $4,331.57**. This model was used to make predictions on the top 25 zipcodes with average property values under $300,000 in order to make a recommendation of five zipcodes for investment.
@@ -46,6 +49,8 @@ The Final Model was developed by building a **LSTM Neural Network Model which ha
 * **Zipcode 19125 in Pennsylvania with a growth of 2.17%**
 * **Zipcode 19968 in Delaware with a growth of 1.9%**
 * **Zipcode 34120 in Florida with a growth of .95%**
+
+![top5map](Images/Top_5_zips.png)
 
 ## Recommendations
 
