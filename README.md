@@ -1,4 +1,4 @@
-
+![House](Images/real-estate.webp)
 
 # Compass Real Estate Time Series Modeling
 
@@ -14,7 +14,7 @@ Compass Real Estate is interested in investing in lower priced housing, under $3
 
 ## Dataset
 
-The dataset used for this project is a subset of a larger dataset from Zillow, and consists of 14,732 rows and 272 columns. The format of the dataset includes the features RegionID, Region Name (Zipcode), City, State, Metro, County Name, Size Rank, and the average price of houses in the zipcode starting in April of 1994 and ending with April of 2018. Each RegionName/Zipcode is a unique value, while Metro and County Name are not. It is also important to note that the dataset is in a wide format versus a long format. Therefore in order to pass this data into a model, the dataset will need to be reshaped to a long format.
+The dataset used for this project is a subset of a larger dataset from Zillow, and consists of **14,732 rows** and **272 columns**. The format of the dataset includes the features **RegionID, Region Name (Zipcode), City, State, Metro, County Name, Size Rank**, and the **average price of houses in the zipcode starting in April of 1994 and ending with April of 2018**. Each **RegionName/Zipcode** is a unique value, while **Metro and County Name** are not. It is also important to note that the dataset is in a **wide format** versus a **long format**. Therefore in order to pass this data into a model, the dataset will need to be reshaped to a **long format**.
 
 ## Data Preparation
 
