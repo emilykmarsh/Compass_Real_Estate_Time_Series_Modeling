@@ -63,14 +63,14 @@ Now that a model has been created that can predict with reasonable accuracy zipc
 *   **19968**
 *   **34120**
 
-These five zipcodes, according to the final model, will experience **the largest amount of growth over the next two years**. 
+These five zip codes, according to the final model, will experience **the largest amount of growth over the next two years**. 
 
 ## Next Steps
 
-To continue towards the goal of a higly predictive model, Compass Real Estate could follow tehes additional suggetions:
+To continue towards the goal of a highly predictive model, Compass Real Estate could follow these additional suggetions:
 
-1.   **Include current pricing for more up to date predictions**
-2.   **Conduct additional research into feature importance of zipcodes for impact on growth**
+1.   **Include current pricing for more up-to-date predictions**
+2.   **Conduct additional research into the feature importance of zipcodes for impact on growth**
 3.   **Additional exploration into optimized parameters for the LSTM Neural Network model to increase RMSE scores**
 
 ## References
@@ -81,7 +81,7 @@ To continue towards the goal of a higly predictive model, Compass Real Estate co
 
 ## For More Information
 
-The full analysis and process by which these conclusions were reached can be found in the Jupyter notebook or by reviewing the summary presentation.
+The full analysis and process by which these conclusions were reached can be found in the [Jupyter Notebook](Notebook.ipynb) or by reviewing the [summary presentation](Presentation.pdf).
 
 For additional questions, contact Emily Marsh: marshemily2@gmail.com
 
@@ -93,6 +93,6 @@ For additional questions, contact Emily Marsh: marshemily2@gmail.com
  
  ├── README.md
  
- ├── PhaseFourFinalProjectPresentation.pdf
+ ├── [Presentation.pdf](Presentation.pdf)
  
- └── PhaseFourProject.ipynb
+ └── [Project.ipynb](Project.ipynb)
